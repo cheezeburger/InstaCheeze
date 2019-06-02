@@ -2,7 +2,7 @@
 
 A standalone Instagram image poster program written in C#.
 
-InstaCheeze lets you post images to your Instagram account on your computer, bypassing posting made available in Instagram mobile app only.
+InstaCheeze lets you post images to your Instagram account on your computer, bypassing posting made available on Instagram mobile app only.
 
 Note as of initial release version: 
 1. This program can only post one image at a time. Album and video are not supported at the moment.
