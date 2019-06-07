@@ -30,9 +30,9 @@ Note as of initial release version:
 
 ## CHANGELOG
 ### v0.1.1
-> Added 2FA login support
-> Added Save/Load previous session
-> Added auto load saved session if remember me is ticked from previous login
+- Added 2FA login support
+- Added Save/Load previous session
+- Added auto load saved session if remember me is ticked from previous login
 Note: For now, delete the "state.bin" file in the bin folder to remove session.
 
 As this project is mainly for posting images from computers/laptops, others functions i.e: likes, follow, unfollow will not be implemented.
