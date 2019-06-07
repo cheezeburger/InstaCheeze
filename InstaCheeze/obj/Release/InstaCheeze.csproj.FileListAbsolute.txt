@@ -12,3 +12,18 @@ C:\Users\Shane\source\repos\InstaCheeze\InstaCheeze\obj\Release\InstaCheeze.cspr
 C:\Users\Shane\source\repos\InstaCheeze\InstaCheeze\obj\Release\InstaCheeze.csproj.CopyComplete
 C:\Users\Shane\source\repos\InstaCheeze\InstaCheeze\obj\Release\InstaCheeze.exe
 C:\Users\Shane\source\repos\InstaCheeze\InstaCheeze\obj\Release\InstaCheeze.pdb
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\bin\Release\InstaCheeze.exe.config
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\bin\Release\InstaCheeze.exe
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\bin\Release\InstaCheeze.pdb
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\bin\Release\InstagramApiSharp.dll
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\bin\Release\Newtonsoft.Json.dll
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\bin\Release\Newtonsoft.Json.xml
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.csprojAssemblyReference.cache
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.LoginForm.resources
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.PanelForm.resources
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.Properties.Resources.resources
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.csproj.GenerateResource.cache
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.csproj.CoreCompileInputs.cache
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.csproj.CopyComplete
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.exe
+C:\Users\Shane\Desktop\InstaCheeze\InstaCheeze v0.1\InstaCheeze\obj\Release\InstaCheeze.pdb
