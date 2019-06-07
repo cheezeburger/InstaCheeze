@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,21 +56,30 @@ namespace InstaCheeze
 
         public async void StartUpload()
         {
-            var checkFileExtensionType = (filePath.Substring(filePath.LastIndexOf('.'))).ToLower();
-            
-            System.Drawing.Image imageForConversion = System.Drawing.Image.FromFile(@filePath);
-            var saveLocation = "";
-            filePath = saveLocation = filePath.Substring(0, filePath.LastIndexOf('.')) + ".jpeg";
-            imageForConversion.Save(@saveLocation, System.Drawing.Imaging.ImageFormat.Jpeg);
-            checkFileExtensionType = saveLocation.Substring(saveLocation.LastIndexOf('.')).ToLower();
+            try
+            {
+                var checkFileExtensionType = (filePath.Substring(filePath.LastIndexOf('.'))).ToLower();
+                // Convert Image to JPG
+                System.Drawing.Image imageForConversion = System.Drawing.Image.FromFile(@filePath);
+                var saveLocation = "";
+                filePath = saveLocation = filePath.Substring(0, filePath.LastIndexOf('.')) + "1.jpeg";
+                imageForConversion.Save(@saveLocation, System.Drawing.Imaging.ImageFormat.Jpeg);
+                checkFileExtensionType = saveLocation.Substring(saveLocation.LastIndexOf('.')).ToLower();
 
-            switch(checkFileExtensionType){
-               case ".jpeg": case ".jpg":
-                    await DoPictureUpload();
-                    break;
-                default:
-                    MessageBox.Show("File is not supported");
-                    break;
+                switch (checkFileExtensionType)
+                {
+                    case ".jpeg":
+                    case ".jpg":
+                        await DoPictureUpload();
+                        break;
+                    default:
+                        MessageBox.Show("File is not supported");
+                        break;
+                }
+            }
+            catch(NullReferenceException n)
+            {
+                MessageBox.Show("Please select a media to upload.", "No Files Selected");
             }
 
             
@@ -77,6 +87,7 @@ namespace InstaCheeze
 
         private async Task DoPictureUpload()
         {
+            uploadBtn.Enabled = false;
             var picture = new InstaImageUpload
             {
                 Height = 0,
@@ -88,6 +99,7 @@ namespace InstaCheeze
 
             progressLbl.Text = (result.Succeeded ? $"Picture Uploaded: {result.Value.Pk}"
                 : $"Unable to upload photo: {result.Info.Message}");
+            uploadBtn.Enabled = true;
         }
 
         //Function to be called by photo upload functions to update progressLbl

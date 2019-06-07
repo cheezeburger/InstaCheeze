@@ -19,6 +19,7 @@ namespace InstaCheeze
     public partial class LoginForm : Form
     {
         public User newUser;
+        IInstaApi _instaApiInstance;
         public LoginForm()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace InstaCheeze
 
                 newUser.SetUserSessionData();
 
-                IInstaApi _instaApiInstance = User.SessionApiBuilder();
+                _instaApiInstance = User.SessionApiBuilder();
 
                 if (!_instaApiInstance.IsUserAuthenticated)
                 {
@@ -61,10 +62,23 @@ namespace InstaCheeze
                         panelForm.Show();
                     }
 
+                    //If 2FA is required
+                    else if(loginResult.Value == InstaLoginResult.TwoFactorRequired)
+                    {
+                        var TwoFactorForm = new TwoFactorForm();
+                        TwoFactorForm.ShowDialog();
+
+                        this.Hide();
+                    }
+
                     else { 
                         MessageBox.Show(loginResult.Info.Message);
                         loginBtn.Enabled = true;
                     }
+
+                    //Save session 
+                    if (rememberMeBtn.Checked)
+                        SaveSession();
                 }
             }
             else
@@ -77,13 +91,23 @@ namespace InstaCheeze
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            newUser = new User();       
-            if(Properties.Settings.Default.username != null && Properties.Settings.Default.password != null)
+            newUser = new User();
+            if (Properties.Settings.Default.username != null && Properties.Settings.Default.password != null)
             {
                 usernameTxt.Text = Properties.Settings.Default.username;
                 passwordTxt.Text = Properties.Settings.Default.password;
+
+                //Attempt to automatically load previous saved session
+                if (File.Exists("state.bin"))
+                {
+                    LoadSavedSession();
+                    
+                    var panelForm = new PanelForm();
+                    panelForm.ShowDialog();
+
+                    this.Hide();
+                }
             }
-            
         }
 
         //Enable client repositioning
@@ -109,6 +133,36 @@ namespace InstaCheeze
         private void MinimizeBtn_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void LoadSavedSession()
+        {
+            const string stateFile = "state.bin";
+
+            try
+            {
+                loginProcessLbl.Text = "Loading previous session.";
+                using (var fs = File.OpenRead(stateFile))
+                {
+                    _instaApiInstance = User.SessionApiBuilder();
+                    _instaApiInstance.LoadStateDataFromStream(fs);
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e.Message);
+            }
+        }
+
+        private void SaveSession()
+        {
+            var state = _instaApiInstance.GetStateDataAsStream();
+            using (var fileStream = File.Create("state.bin"))
+            {
+                state.Seek(0, SeekOrigin.Begin);
+                state.CopyTo(fileStream);
+            }
         }
     }
 }
